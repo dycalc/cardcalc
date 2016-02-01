@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>steam市场售价计算器</title>
   <script src="./js/calc.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="./css/master.css" media="screen" title="no title" charset="utf-8">
 </head>
+
 <body>
   <h1>steam市场售价计算器</h1>
-  <div>
-    <p>请输入预期的售价</p>
-    <input id="rmbGot" type="text">
-  </div>
-  <div>
-    <p>请输入一美元对人民币的实时汇率</p>
-    <input id="excRate" type="text">
-  </div>
-  <div>
-    <button type="button" name="button" onclick="calcLoop()">计算</button>
-    <p>建议售价（您收款）</p>
-    <input id="maxRmb" type="text">
+  <div class="bigDiv">
+    <div>
+      <p class="header">请输入预期的售价（税后）</p>
+      <input id="rmbGot" type="text">
+    </div>
+    <div>
+      <p>一美元对人民币的汇率</p>
+      <input id="excRate" type="text">
+    </div>
+    <div>
+      <button type="button" name="button" onclick="calcLoop()">计算</button>
+      <p>建议售价（税后）</p>
+      <input id="maxRmb" type="text">
+    </div>
   </div>
 </body>
+
 </html>
