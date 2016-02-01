@@ -1,4 +1,3 @@
-console.log(1111);
 // 小数点后两位天花板方法
 function pointCeil(qian) {
   var qian100 = qian * 100;
@@ -56,10 +55,11 @@ function calcLoop() {
     taxValve = 0.01;
   }
   var daoSell = daoGot + taxCamp + taxValve;
-  console.log(daoSell);
+  // console.log(daoSell);
   var initDao = daoSell;
   while (initDao == daoSell) {
-    rmbGot = rmbGot + 0.01;
+    rmbGot = Number(rmbGot) + 0.01;
+    console.log(rmbGot);
     var daoGot = rmbGot / excRate;
     var taxCamp = daoGot * 0.1;
     var taxValve = daoGot * 0.05;
@@ -74,7 +74,7 @@ function calcLoop() {
       taxValve = 0.01;
     }
     var daoSell = daoGot + taxCamp + taxValve;
-    console.log(daoSell);
   }
+  console.log(rmbGot);
   document.getElementById("maxRmb").value = rmbGot
 }
