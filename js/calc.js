@@ -15,33 +15,32 @@ function pointFloor(qian) {
 }
 
 
-// 计算美元区售价
-function calc() {
-  var daoGot = rmbGot / excRate;
-  var taxCamp = daoGot * 0.1;
-  var taxValve = daoGot * 0.05;
-  if (taxCamp > 0.01) {
-    taxCamp = pointFloor(taxCamp);
-  } else {
-    taxCamp = 0.01;
-  }
-  if (taxValve > 0.01) {
-    taxValve = pointFloor(taxValve);
-  } else {
-    taxValve = 0.01;
-  }
-  var daoSell = daoGot + taxCamp + taxValve;
-  return daoSell
-}
+// 计算美元区售价，已经写到代码里面了
+// function calc() {
+//   var daoGot = rmbGot / excRate;
+//   var taxCamp = daoGot * 0.1;
+//   var taxValve = daoGot * 0.05;
+//   if (taxCamp > 0.01) {
+//     taxCamp = pointFloor(taxCamp);
+//   } else {
+//     taxCamp = 0.01;
+//   }
+//   if (taxValve > 0.01) {
+//     taxValve = pointFloor(taxValve);
+//   } else {
+//     taxValve = 0.01;
+//   }
+//   var daoSell = daoGot + taxCamp + taxValve;
+//   return daoSell
+// }
 
 function calcLoop() {
   var rmbGot = document.getElementById("rmbGot").value;
-  // var rmbGot = rmbGotLast.value
   var excRate = document.getElementById("excRate").value;
-  // var excRate = excRateLast.value
   // console.log(rmbGot);
   // console.log(excRate);
   var daoGot = rmbGot / excRate;
+  var daoGot = pointCeil(daoGot);
   var taxCamp = daoGot * 0.1;
   var taxValve = daoGot * 0.05;
   if (taxCamp > 0.01) {
@@ -57,9 +56,9 @@ function calcLoop() {
   var daoSell = daoGot + taxCamp + taxValve;
   // console.log(daoSell);
   var initDao = daoSell;
-  while (initDao == daoSell) {
+  while (initDao === daoSell) {
     rmbGot = Number(rmbGot) + 0.01;
-    console.log(rmbGot);
+    // console.log(rmbGot);
     var daoGot = rmbGot / excRate;
     var taxCamp = daoGot * 0.1;
     var taxValve = daoGot * 0.05;
@@ -73,8 +72,11 @@ function calcLoop() {
     } else {
       taxValve = 0.01;
     }
-    var daoSell = daoGot + taxCamp + taxValve;
+    var daoSell = Number(daoGot) + Number(taxCamp) + Number(taxValve);
+    console.log(initDao);
+    console.log(daoSell);
   }
-  console.log(rmbGot);
+  rmbGot = Number(rmbGot) - 0.01;
+  // console.log(rmbGot);
   document.getElementById("maxRmb").value = rmbGot
 }
