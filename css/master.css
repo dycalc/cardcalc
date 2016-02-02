@@ -5,7 +5,7 @@ body {
 .bigDiv {
   border: 1px solid #d8dee2;
   width: 340px;
-  height: 298px;
+  height: 500px;
   position: relative;
   margin: 0 auto;
 }
@@ -13,4 +13,18 @@ body {
 button {
   width: 66px;
   height: 50px;
+  margin-top: 8px;
+  margin-left: 18px;
+  margin-right: 18px;
+  font-size: 25px;
+}
+
+input {
+  width: 255px;
+  height: auto;
+  font-size: 25px;
+}
+
+p {
+  font-size: 22px;
 }

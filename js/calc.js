@@ -14,6 +14,22 @@ function pointFloor(qian) {
   return qianLittleFloor
 }
 
+function autoExc() {
+  $.ajax({
+    type: "get",
+    async: false,
+    url: 'http://api.k780.com:88/?app=finance.rate&scur=USD&tcur=CNY&appkey=17689&sign=5229acbbce8da2ee0c64717b16c98c43&format=json&jsoncallback=data=?',
+    dataType: "jsonp",
+    success: function(data) {
+      $("#excRate").val(data.result.rate)
+      console.log($("#excRate").value);
+      console.log(data.result.rate)
+    },
+    error: function() {
+      alert('汇率请求失败');
+    }
+  });
+}
 
 // 计算美元区售价，已经写到代码里面了
 // function calc() {
@@ -80,3 +96,5 @@ function calcLoop() {
   // console.log(rmbGot);
   document.getElementById("maxRmb").value = rmbGot
 }
+
+autoExc()
