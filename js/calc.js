@@ -22,8 +22,8 @@ function autoExc() {
     dataType: "jsonp",
     success: function(data) {
       $("#excRate").val(data.result.rate)
-      console.log($("#excRate").value);
-      console.log(data.result.rate)
+      // console.log($("#excRate").value);
+      // console.log(data.result.rate)
     },
     error: function() {
       alert('汇率请求失败');
@@ -57,6 +57,7 @@ function calcLoop() {
   // console.log(excRate);
   var daoGot = rmbGot / excRate;
   var daoGot = pointCeil(daoGot);
+  // console.log(daoGot);
   var taxCamp = daoGot * 0.1;
   var taxValve = daoGot * 0.05;
   if (taxCamp > 0.01) {
@@ -69,13 +70,17 @@ function calcLoop() {
   } else {
     taxValve = 0.01;
   }
+  // console.log(taxCamp);
+  // console.log(taxValve);
   var daoSell = daoGot + taxCamp + taxValve;
+  console.log(daoSell);
   // console.log(daoSell);
   var initDao = daoSell;
   while (initDao === daoSell) {
     rmbGot = Number(rmbGot) + 0.01;
     // console.log(rmbGot);
     var daoGot = rmbGot / excRate;
+    var daoGot = pointCeil(daoGot);
     var taxCamp = daoGot * 0.1;
     var taxValve = daoGot * 0.05;
     if (taxCamp > 0.01) {
